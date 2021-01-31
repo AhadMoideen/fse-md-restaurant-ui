@@ -1,0 +1,16 @@
+.Navigation {
+    width: 100%;
+    background-color: black;
+  }
+  
+  .BtnLogout {
+ margin: auto;
+ background-color: lightblue;
+ height: 30px;
+ text-align: right;
+ right: 40px;
+ position: fixed;
+    
+  }
+
+  

@@ -1,0 +1,14 @@
+
+
+label{
+    font-size: .7rem;
+}
+
+.error{
+    position: absolute;
+    color: red;
+    font-size: .6rem;
+}
+body {
+    background-color: black !important;
+}

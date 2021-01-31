@@ -1,0 +1,61 @@
+.Login {
+    width: 50%;
+    overflow: hidden;
+    margin: auto;
+    margin: 20 0 0 450px;
+    padding: 80px;
+    background: #ced6d4;
+    border-radius: 15px;
+}
+.LMS {
+    border-radius: 6px 6px 0 0;
+    box-sizing: border-box;
+    display: block;
+    height: 43px;
+    font: 600 14px/1 'Open Sans', sans-serif;
+    padding-top: 5%;
+    margin: 0;
+    text-align: center;
+    width: 80%;
+    margin-left:10%;
+    
+}
+h1 {
+    font-size: 2.5rem;
+    color: #37a69b;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 1px;
+}
+.Btn {
+    width:240px;
+  height:35px;
+  font-family:Arial, "Helvetica", sans-serif;
+  font-size:16px;
+  font-weight:bold;
+  color:#fff;
+  text-decoration:none;
+  text-transform:uppercase;
+  text-align:center;
+  text-shadow:1px 1px 0px #37a69b;
+  padding-top:6px;
+  margin: 29px 0 0 29px;
+  position:relative;
+  cursor:pointer;
+  border: none;  
+  background-color: #37a69b;
+  background-image: linear-gradient(top,#3db0a6,#3111);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius:5px;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+
+}
+
+.Singup {
+  margin: 20px;
+  display: inherit;
+
+}
