@@ -3,7 +3,6 @@
  * @param userEmail email of the Faculty for which Courses are being fetched.
  * @returns {Promise<void>}
  */
-import courseCard from "../components/CourseCard/CourseCard";
 
 
 export const getCoursesForFaculty = async (userEmail) => {
@@ -23,11 +22,13 @@ export const getCoursesForFaculty = async (userEmail) => {
 export const saveCourse = async (course) => {
     /* API Call to get courses for the user  */
     course.courseId = getRandomInt(10, 100000);
+    course.students = getDummyUsers();
     let courses = getAllCourses();
     courses.push(course);
     localStorage.setItem('courses', JSON.stringify(courses));
     return courses;
 };
+
 
 
 export const getCourse = async (courseId) =>{
@@ -69,6 +70,18 @@ function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+
+function getDummyUsers() {
+    return [
+        {
+            email: "ahadmoideen@gmail.com",
+            name: "Abdul Ahad"
+        },
+        {
+            email: "pranavvp@gmail.com",
+            name: "Pranav V P"
+        }]; //The maximum is exclusive and the minimum is inclusive
 }
 
 /**
