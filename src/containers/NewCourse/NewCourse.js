@@ -14,7 +14,7 @@ class NewCourse extends Component {
 
     render() {
         const validate = Yup.object({
-            module: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
+            courseName: Yup.string().max(15, 'Must be 15 characters or less').required('Required'),
             description: Yup.string().min(10, 'Must be 10 characters or more').required('Required'),
             faculty: Yup.string().min(6, 'Password must be at least 6 characters').required('Required')
         });
@@ -22,7 +22,7 @@ class NewCourse extends Component {
 
             <Formik {...this.props}
                     initialValues={{
-                        module: '',
+                        courseName: '',
                         description: '',
                         faculty: this.props.user.userName
                     }}
@@ -40,7 +40,7 @@ class NewCourse extends Component {
                                         </div>
                                         <h1 className="my-4 font-weight-bold-display-4">Add New Course</h1>
                                         <Form>
-                                            <TextField label="Module" name="module" type="text"/>
+                                            <TextField label="Course Name" name="courseName" type="text"/>
                                             <TextField label="Description" name="description" type="text"/>
                                             <TextField disabled label="Faculty" name="faculty" type="text"/>
                                             <button className="btn btn-dark mt-3" type="submit">
