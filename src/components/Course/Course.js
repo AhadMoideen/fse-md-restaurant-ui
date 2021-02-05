@@ -9,6 +9,7 @@ import {Link} from "react-router-dom";
 import {Collapse} from "react-collapse";
 import NewModule from "./components/NewModule/NewModule";
 import {ModuleCard} from "./components/ModuleCard/ModuleCard";
+import {StudentCard} from "./components/StudentCard/StudentCard";
 class Course extends Component {
 
 
@@ -33,7 +34,7 @@ class Course extends Component {
                     <br/>
                     <br/>
                 </div>
-
+                <div className="courseDetails">
                 {
                     (this.state.course.modules && this.state.course.modules.length) &&
                     (<span className="courses">
@@ -104,6 +105,17 @@ class Course extends Component {
                     !this.state.evaluationComponent &&  <button className="Btn" onClick={this.addEvaluationComponent}>Add Evaluation</button>
                 }
                 {/* End:New Evaluation Component*/}
+                </div>
+                <div className="studentDetails">
+                    <h5>Students enrolled</h5>
+                    {
+                        (this.state.course.students && this.state.course.students.length) &&
+                        (<span className="courses">
+                            {this.state.course.students.map(student => <StudentCard
+                                student={student} key={student.email}/>)}
+                    </span>)
+                    }
+                </div>
             </article>
         );
     }
