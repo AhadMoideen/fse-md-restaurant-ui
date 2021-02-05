@@ -53,7 +53,7 @@ class Register extends Component {
                                         <Form>
                                             <TextField label="Full Name" name="fullName" type="text"/>
                                             <TextField label="User Name(email)" name="userName" type="text"/>
-                                            <TextField label="Password" name="password" type="text"/>
+                                            <TextField label="Password" name="password" type="password" tooltip="Minimum 6 characters"/>
                                             <label htmlFor="userType">User Type</label>
                                             <Field as="select" name="userType" className="form-control shadow-none">
                                                 <option value="FACULTY">FACULTY</option>
