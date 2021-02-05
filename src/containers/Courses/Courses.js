@@ -32,7 +32,7 @@ class Courses extends Component {
                 return (
 
                     <Course className="Courses" key={course.courseId}
-                            module={course.module}
+                            courseName={course.courseName}
                             description={course.description}
                             clicked={() => this.courseSelectedHandler(course.courseId)}/>
                 );
