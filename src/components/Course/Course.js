@@ -34,7 +34,8 @@ class Course extends Component {
                     <br/>
                     <br/>
                 </div>
-                <div className="courseDetails">
+                <div className="d-flex">
+                <div className="courseDetails col-8" >
                 {
                     (this.state.course.modules && this.state.course.modules.length) &&
                     (<span className="courses">
@@ -106,7 +107,7 @@ class Course extends Component {
                 }
                 {/* End:New Evaluation Component*/}
                 </div>
-                <div className="studentDetails">
+                <div className="studentDetails col-4">
                     <h5>Students enrolled</h5>
                     {
                         (this.state.course.students && this.state.course.students.length) &&
@@ -116,6 +117,7 @@ class Course extends Component {
                     </span>)
                     }
                 </div>
+                    </div>
             </article>
         );
     }
