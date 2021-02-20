@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Course.css';
-import {getCourse, updateCourse} from "../../services/course.service";
+import {getCourse, saveModule, saveEvaluationComponent} from "../../services/course.service";
 import NewEvaluationComponent from "./components/NewEvaluationComponent/NewEvaluationComponent";
 import {EvaluationComponentCard} from './components/EvaluationComponentCard/EvaluationComponentCard';
 
@@ -157,16 +157,11 @@ class Course extends Component {
     saveEvaluationComponent =(evaluationComponent) => {
         console.log('Save-EvalComp:',evaluationComponent);
         let course = this.state.course;
-        if(course.evaluationComponents){
-            course.evaluationComponents.push(evaluationComponent);
-        }
-        else {
-            course.evaluationComponents = [];
-            course.evaluationComponents.push(evaluationComponent);
-        }
-        updateCourse(course).then(result => {
-            this.setState({course:result,evaluationComponent:false, evaluationComponentCollapse:false});
-        } );
+        /* API: Implementation */
+        saveEvaluationComponent(course.courseId, evaluationComponent)
+            .then(result=>{
+                this.setState({course:result,evaluationComponent:false, evaluationComponentCollapse:false});
+            });
     }
 
     /**
@@ -175,16 +170,11 @@ class Course extends Component {
      */
     saveModule =(module) => {
         let course = this.state.course;
-        if(course.modules){
-            course.modules.push(module);
-        }
-        else {
-            course.modules = [];
-            course.modules.push(module);
-        }
-        updateCourse(course).then(result => {
-            this.setState({course:result,newModuleModal:false});
-        } );
+        /* API: Implementation */
+        saveModule(course.courseId, module)
+            .then(course=>{
+                this.setState({course:course,newModuleModal:false});
+            });
     }
 
 
