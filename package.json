@@ -6,7 +6,9 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "cross-env": "^7.0.3",
     "formik": "^2.2.6",
     "react": "^17.0.1",
     "react-collapse": "^5.1.0",
@@ -23,9 +25,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:dev": "set \"REACT_APP_ENV=dev\" react-scripts start",
+    "start:stg": "set \"REACT_APP_ENV=stg\" && react-scripts start",
+    "start:prod": " set \"REACT_APP_ENV=prod\" && react-scripts start",
+    "build": "set \"CI=false\" && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:dev": "set \"REACT_APP_ENV=dev\" && set \"CI=false\" && react-scripts build",
+    "build:stg": "set \"REACT_APP_ENV=stg\" && set \"CI=false\" && react-scripts build"
   },
   "eslintConfig": {
     "extends": [

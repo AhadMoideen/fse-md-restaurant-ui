@@ -1,22 +1,24 @@
+import axios from 'axios';
+import environment from "../../src/environment";
+
 /**
  * Register a User.
  * @param values
  * @returns {Promise<void>}
  */
+
 export const register = async (values) => {
     /* API Call to register */
     console.log('Register',values);
-    let users = [];
-    let usersString = localStorage.getItem('users');
-    if(usersString){
-        users = JSON.parse(usersString);
-    }
-    else{
-        users = [];
-    }
-    users.push(values);
-    localStorage.setItem('users', JSON.stringify(users));
-    console.log('RegisterFinish',values);
+    /* API: Implementation */
+    return axios.post(`${environment.baseURL}/register/`, values)
+        .then(function (response) {
+            console.log('Register:Success:', response.data);
+                return response.data
+        })
+        .catch(function (error) {
+            throw error;
+        });
 };
 
 /**
@@ -25,36 +27,30 @@ export const register = async (values) => {
  * @returns {Promise<null>}
  */
 export const login = async (values) => {
+    console.log(environment.baseURL);
+    console.log(process.env.REACT_APP_ENV);
     /* API Call to register */
-    console.log('Login',values);
-    let users = [];
-    let usersString = localStorage.getItem('users');
-    if(usersString){
-        users = JSON.parse(usersString);
-        let userFound = null;
-        users.forEach(user=>{
-            if(user.userName==values.userName && user.password ==values.password && user.userType === values.userType){
-                /* Login successful */
-                user.token = 'xyz43hjIm36Y';
-                userFound = user;
-            }
-            else if (user.userName==values.userName && user.password ==values.password && user.userType !== values.userType){
+    console.log('Login:',values);
+
+
+    
+    /* API: Implementation */
+    return axios.post(`${environment.baseURL}/login/`, values)
+        .then(function (response) {
+            console.log('Login:Success:', response.data);
+            if (response.data.userType !== response.data.userType) {
                 throw new Error("Role not allowed");
+            } else {
+                /* Login successful */
+                response.data.token = 'xyz43hjIm36Y';
+                return response.data
             }
+        })
+        .catch(function (error) {
+            console.log(error);
         });
-        return userFound;
-    }
-    else{
-        /* No existing users */
-        let users = [{
-            fullName: 'Ahad Moideen',
-            userName: 'ahad@tripworld.com',
-            password: '123456',
-            userType: 'FACULTY'
-        }];
-        localStorage.setItem('users', JSON.stringify(users));
-        return null;
-    }
+    /* API: Implementation */
+
 };
 
 

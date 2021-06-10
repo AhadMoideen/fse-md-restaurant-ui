@@ -5,7 +5,7 @@ export const StudentCard = ({student}) => {
     return (
         <div className="StudentCard">
             <pre >
-                <span>{student.name} ({student.email})</span>
+                <span>{student.fullName} ({student.userName})</span>
             </pre>
         </div>
     );

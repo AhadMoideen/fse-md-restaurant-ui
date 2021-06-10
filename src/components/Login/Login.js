@@ -19,7 +19,6 @@ class Login extends Component {
 
         const user = localStorage.getItem('user');
         if (user && JSON.parse(user).token) {
-            console.log(this.props)
             this.props.history.replace({pathname: '/dashboard'});
         }
         const validate = Yup.object({
@@ -71,8 +70,9 @@ class Login extends Component {
     }
 
     login = (values) => {
-        login(values).then(user => {
-            if (user && user.userName) {
+        login(values)
+            .then(user => {
+            if (user &&user.userName) {
                 /*Login succesful: Route to Dashboard */
                 localStorage.setItem('user', JSON.stringify(user));
                 toast.success("Login Successful!")
