@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import environment from "../../src/environment";
 
 /**
  * Register a User.
@@ -11,7 +11,7 @@ export const register = async (values) => {
     /* API Call to register */
     console.log('Register',values);
     /* API: Implementation */
-    return axios.post('http://localhost:8000/register/', values)
+    return axios.post(`${environment.baseURL}/register/`, values)
         .then(function (response) {
             console.log('Register:Success:', response.data);
                 return response.data
@@ -27,10 +27,15 @@ export const register = async (values) => {
  * @returns {Promise<null>}
  */
 export const login = async (values) => {
+    console.log(environment.baseURL);
+    console.log(process.env.REACT_APP_ENV);
     /* API Call to register */
     console.log('Login:',values);
+
+
+    
     /* API: Implementation */
-    return axios.post('http://localhost:8000/login/', values)
+    return axios.post(`${environment.baseURL}/login/`, values)
         .then(function (response) {
             console.log('Login:Success:', response.data);
             if (response.data.userType !== response.data.userType) {
@@ -45,6 +50,7 @@ export const login = async (values) => {
             console.log(error);
         });
     /* API: Implementation */
+
 };
 
 

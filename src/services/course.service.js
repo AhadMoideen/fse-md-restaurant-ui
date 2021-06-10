@@ -1,4 +1,7 @@
 import axios from 'axios';
+import environment from "../../src/environment";
+
+
 
 /**
  * Register a User.
@@ -8,7 +11,8 @@ import axios from 'axios';
 
 export const getCoursesForFaculty = async (userEmail) => {
     /* API Call to get courses for the user  */
-    return axios.get(`http://localhost:8000/course/user/${userEmail}`)
+    console.log(environment.baseURL);
+    return axios.get(`${environment.baseURL}/course/user/${userEmail}`)
         .then(function (response) {
             return response.data;
         })
@@ -25,7 +29,7 @@ export const getCoursesForFaculty = async (userEmail) => {
 export const saveCourse = async (course) => {
     /* API Call to get courses for the user  */
     /* API: Implementation */
-    return axios.post('http://localhost:8000/course/', course)
+    return axios.post(`${environment.baseURL}/course/`, course)
         .then(function (response) {
             return response.data
         })
@@ -37,7 +41,7 @@ export const saveCourse = async (course) => {
 
 
 export const getCourse = async (courseId) =>{
-    return axios.get(`http://localhost:8000/course/${courseId}`)
+    return axios.get(`${environment.baseURL}/course/${courseId}`)
         .then(function (response) {
             return response.data;
         })
@@ -55,7 +59,7 @@ export const getCourse = async (courseId) =>{
 export const saveModule = async (courseId, module) => {
     /* API Call to get courses for the user  */
     /* API: Implementation */
-    return axios.post(`http://localhost:8000/course/${courseId}/module`, module)
+    return axios.post(`${environment.baseURL}/course/${courseId}/module`, module)
         .then(function (response) {
             return response.data
         })
@@ -76,7 +80,7 @@ export const saveModule = async (courseId, module) => {
 export const saveEvaluationComponent = async (courseId, evaluationComponent) => {
     /* API Call to get courses for the user  */
     /* API: Implementation */
-    return axios.post(`http://localhost:8000/course/${courseId}/e-val`, evaluationComponent)
+    return axios.post(`${environment.baseURL}/course/${courseId}/e-val`, evaluationComponent)
         .then(function (response) {
             return response.data
         })
