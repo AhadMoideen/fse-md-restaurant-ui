@@ -26,8 +26,8 @@ class Register extends Component {
             userName: Yup.string().email('Email is invalid').required('Required'),
             password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
             confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Password must match').required('Confirm password is required.'),
-            userType: Yup.string().required('Required'),
-            dob: Yup.date().required('Required')
+            address: Yup.string().max(25, 'Must be 25 characters or less').required('Required'),
+            phone: Yup.number().min(5, 'Must be 5 or more').required('Required')
         });
         return (
 
@@ -54,18 +54,10 @@ class Register extends Component {
                                             <TextField label="Full Name" name="fullName" type="text"/>
                                             <TextField label="User Name(email)" name="userName" type="text"/>
                                             <TextField label="Password" name="password" type="password" tooltip="Minimum 6 characters"/>
-                                            <label htmlFor="userType">User Type</label>
-                                            <Field as="select" name="userType" className="form-control shadow-none">
-                                                <option value="FACULTY">FACULTY</option>
-                                                <option value="STUDENT">STUDENT</option>
-                                            </Field>
-                                            <ErrorMessage component="div" name="userType" className="error"/>
                                             <TextField label="Confirm Password" name="confirmPassword" type="text"/>
-                                            <label htmlFor="dob">Date of Birth</label>
-                                            <DateTimePicker disableClock={true}
-                                                onChange={this.dateChange}
-                                                value={this.state.date} format="y-MM-dd"
-                                                name="dob"/>
+                                            <TextField label="Address" name="address" type="text"/>
+                                            <TextField label="Phone" name="phone" type="text"/>                                          
+                                            
                                             <button className="Btn" type="submit">
                                                 Register
                                             </button>
@@ -90,11 +82,12 @@ class Register extends Component {
     register = (values) => {
         /* Validate from backend to check if user exist or not */
         console.log(values);
-        register(values)
-            .then(value => {
-                toast.success("Registration successful!")
-                this.props.history.push({pathname: '/login'});
-            });
+
+        // register(values)
+        //     .then(value => {
+        //         toast.success("Registration successful!")
+        //         this.props.history.push({pathname: '/login'});
+        //     });
     }
     dateChange = (value) => {
         this.setState({date: value})
