@@ -13,7 +13,7 @@ class LearningManagementSystem extends Component {
     render () {
         return (
             <div className="LMS">
-                <h1>Learning Management system</h1>
+                <h1>Meal-Dash ...... Restaurant Management</h1>
                 <Switch>
                     <Redirect exact from="/" to="/login"/>
                     <Route path="/login" component={LoginRegistration}/>

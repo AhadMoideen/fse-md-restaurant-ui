@@ -10,8 +10,8 @@ import environment from "../../src/environment";
 export const register = async (values) => {
     /* API Call to register */
     console.log('Register',values);
-    /* API: Implementation */
-    return axios.post(`${environment.baseURL}/register/`, values)
+    /* API: Implementation */    
+    return axios.post(`${environment.baseURL}/api/authentication/restaurant/registration/`, values)
         .then(function (response) {
             console.log('Register:Success:', response.data);
                 return response.data

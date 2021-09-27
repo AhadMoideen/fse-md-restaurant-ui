@@ -23,15 +23,13 @@ class Login extends Component {
         }
         const validate = Yup.object({
             userName: Yup.string().email('Email is invalid').required('Required'),
-            password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
-            userType: Yup.string().required('Required')
+            password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required')
         });
         return (<div>
                 <Formik
                     initialValues={{
                         userName: '',
-                        password: '',
-                        userType: 'FACULTY'
+                        password: ''
                     }}
                     validationSchema={validate}
                     onSubmit={this.login}
@@ -45,11 +43,7 @@ class Login extends Component {
                                         <Form>
                                             <TextField label="User Name(email)" name="userName" type="text"/>
                                             <TextField label="Password" name="password" type="password"/>
-                                            <label htmlFor="userType">User Type</label>
-                                            <Field as="select" name="userType" className="form-control shadow-none">
-                                                <option value="FACULTY">FACULTY</option>
-                                                <option value="STUDENT">STUDENT</option>
-                                            </Field>
+                                            
                                             <ErrorMessage component="div" name="userType" className="error"/>
                                             <button className="Btn" type="submit">
                                                 Login
