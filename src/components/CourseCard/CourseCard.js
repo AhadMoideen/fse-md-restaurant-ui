@@ -2,7 +2,7 @@ import React from 'react';
 import './CourseCard.css';
 
 
-const courseCard = (props) => {
+const itemCard = (props) => {
 
     return (
         <article className="Course" onClick={props.clicked}>
@@ -10,7 +10,10 @@ const courseCard = (props) => {
             <div className="Info">
                 <p className="Description">{props.description}</p>
             </div>
+            <div className="Info">
+                <p className="Price">{props.price}</p>
+            </div>
         </article>
     );
 }
-export default courseCard;
+export default itemCard;

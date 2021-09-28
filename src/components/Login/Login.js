@@ -22,13 +22,13 @@ class Login extends Component {
             this.props.history.replace({pathname: '/dashboard'});
         }
         const validate = Yup.object({
-            userName: Yup.string().email('Email is invalid').required('Required'),
+            email: Yup.string().email('Email is invalid').required('Required'),
             password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required')
         });
         return (<div>
                 <Formik
                     initialValues={{
-                        userName: '',
+                        email: '',
                         password: ''
                     }}
                     validationSchema={validate}
@@ -41,7 +41,7 @@ class Login extends Component {
                                     <div className="">
                                         <h1 className="my-4 font-weight-bold-display-4">Login</h1>
                                         <Form>
-                                            <TextField label="User Name(email)" name="userName" type="text"/>
+                                            <TextField label="User Name(email)" name="email" type="text"/>
                                             <TextField label="Password" name="password" type="password"/>
                                             
                                             <ErrorMessage component="div" name="userType" className="error"/>
@@ -65,10 +65,11 @@ class Login extends Component {
 
     login = (values) => {
         login(values)
-            .then(user => {
-            if (user &&user.userName) {
-                /*Login succesful: Route to Dashboard */
-                localStorage.setItem('user', JSON.stringify(user));
+            .then(restaurant => {
+                console.log('restaurant', restaurant);
+            if (restaurant &&restaurant.email) {
+                /*Login successful: Route to Dashboard */
+                localStorage.setItem('restaurant', JSON.stringify(restaurant));
                 toast.success("Login Successful!")
                 this.props.history.push({pathname: '/dashboard'});
             } else {

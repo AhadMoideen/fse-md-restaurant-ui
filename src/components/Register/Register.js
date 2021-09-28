@@ -15,9 +15,7 @@ class Register extends Component {
         super(props);
     }
 
-    state = {
-        latlang:{}
-    }
+    
 
 
     render() {

@@ -10,7 +10,7 @@ class CourseManagement extends Component {
 
     render() {
         /* TODO: If NOT logged in re-direct TO LOGIN*/
-        let user = getLoggedInUser();
+        let restaurant = getLoggedInUser();
         return (
             <div>
                 <h1>Course Management </h1>
@@ -19,7 +19,7 @@ class CourseManagement extends Component {
                 </section>
                 <Switch>
                     <Route path={this.props.match.url + '/add'} exact render={(props) => (
-                        <NewCourse {...props} user={user}/>
+                        <NewCourse {...props} restaurant={restaurant}/>
                     )}/>
                     <Route path={this.props.match.url + '/:id'} exact component={Course}/>
                 </Switch>
