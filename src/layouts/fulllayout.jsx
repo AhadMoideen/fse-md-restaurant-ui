@@ -11,6 +11,9 @@ import ItemsDashboard from "../components/ItemsDashboard/ItemsDashboard";
 
 
 import Course from '../components/Course/Course';
+import CourseManagement from '../containers/CourseManagement/CourseManagement.js';
+import MealPlans from '../containers/MealPlans/MealPlans.js';
+import MealPlansDashboard from '../components/MealPlansDashboard/MealPlansDashboard.js';
 
 
 const Fulllayout = (props) => {
@@ -84,6 +87,7 @@ const Fulllayout = (props) => {
             {/*--------------------------------------------------------------------------------*/}
             <div className="page-wrapper d-block">
                 <div className="page-content container-fluid">
+                <h1>Dashboard</h1>
                 <Switch>
                     <Redirect exact from="/" to="/login" />
                     <Route path="/dashboard" exact render={(props) => (
@@ -92,9 +96,12 @@ const Fulllayout = (props) => {
                     <Route path="/dashboard/items" exact render={(props) => (
                         <ItemsDashboard {...props} restaurant={loggedInUser} />
                     )} />
+                    <Route path="/dashboard/items/add" exact render={(props) => (
+                        <CourseManagement {...props} restaurant={loggedInUser} />
+                    )} />
                     <Route path="/dashboard/mealplan" exact render={(props) => (
-                        <div><h1>Meal Plan</h1>
-                            <ItemsDashboard {...props} restaurant={loggedInUser} />
+                        <div>
+                            <MealPlansDashboard {...props} restaurant={loggedInUser} />
                             </div>
                     )} />
                     {/* <Route path={this.props.match.url + '/:id'} exact component={Course} /> */}

@@ -4,8 +4,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <footer className="footer text-center">
-            All Rights Reserved by Monster admin. Designed and Developed by{' '}
-            <a href="https://wrappixel.com">WrapPixel</a>.
+            All Rights Reserved by Meal-Dash admin.
         </footer>
     );
 }

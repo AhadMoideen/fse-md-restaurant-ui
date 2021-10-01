@@ -28,48 +28,50 @@ class Register extends Component {
             phone: Yup.number().min(5, 'Must be 5 or more').required('Required')
         });
         return (
-            <>            
-            <Formik {...this.props}
-                    initialValues={{
-                        fullName: '',
-                        email: '',
-                        password: '',
-                        confirmPassword: '',
-                        address:''
-                    }}
-                    validationSchema={validate}
-                    onSubmit={this.register}
-            >
-                {formik => {
-                    return (
-                        <div className="Register">
-                            <div className="">
-                                <div className="">
+            <> 
+                <div className="d-flex registration-wrapper">
+                    <Formik {...this.props}
+                            initialValues={{
+                                fullName: '',
+                                email: '',
+                                password: '',
+                                confirmPassword: '',
+                                address:''
+                            }}
+                            validationSchema={validate}
+                            onSubmit={this.register}
+                    >
+                        {formik => {
+                            return (
+                                <div className="Register">
                                     <div className="">
-                                        <h1 className="my-4 font-weight-bold-display-4">Sign-Up</h1>
-                                        <Form>
-                                            <TextField label="Full Name" name="fullName" type="text"/>
-                                            <TextField label="User Name(email)" name="email" type="text"/>
-                                            <TextField label="Password" name="password" type="password" tooltip="Minimum 6 characters"/>
-                                            <TextField label="Confirm Password" name="confirmPassword" type="text"/>
-                                            <TextField label="Address" name="address" type="text"/>
-                                            <TextField label="Phone" name="phone" type="text"/>                                          
-                                            
-                                            <button className="Btn" type="submit">
-                                                Register
-                                            </button>
-                                            <Link className="Loginlink" to="/login">Existing user</Link>
-                                        </Form>
+                                        <div className="">
+                                            <div className="">
+                                                <h1 className="my-4 font-weight-bold-display-4">Sign-Up</h1>
+                                                <Form>
+                                                    <TextField label="Full Name" name="fullName" type="text"/>
+                                                    <TextField label="User Name(email)" name="email" type="text"/>
+                                                    <TextField label="Password" name="password" type="password" tooltip="Minimum 6 characters"/>
+                                                    <TextField label="Confirm Password" name="confirmPassword" type="text"/>
+                                                    <TextField label="Address" name="address" type="text"/>
+                                                    <TextField label="Phone" name="phone" type="text"/>                                          
+                                                    
+                                                    <button className="Btn" type="submit">
+                                                        Register
+                                                    </button>
+                                                    <Link className="Loginlink" to="/login">Existing user</Link>
+                                                </Form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    )
-                }
-                }
-            </Formik>
-                <div style={{ width: "200px", height: "200px" }}>
-                    <MapCustom zoom={8} center={{ lat: 51.5287718, lng: -0.2416804 }} lattitudelongitude={this.setLatLong}/>
+                            )
+                        }
+                        }
+                    </Formik>
+                    <div>
+                        <MapCustom zoom={8} center={{ lat: 51.5287718, lng: -0.2416804 }} lattitudelongitude={this.setLatLong}/>
+                    </div>
                 </div>
             </>
         );

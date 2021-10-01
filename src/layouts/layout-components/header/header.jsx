@@ -22,8 +22,7 @@ import {logout} from '../../../services/user.service';
 
 
 const Header = props => {
-    //const count = useSelector(state => state.counter.count);
-    //const dispatch = useDispatch();
+    let loggedInUser = JSON.parse(localStorage.getItem('restaurant'));
     /*--------------------------------------------------------------------------------*/
     /*To open SIDEBAR-MENU in MOBILE VIEW                                             */
     /*--------------------------------------------------------------------------------*/
@@ -42,6 +41,10 @@ const Header = props => {
             props.history.push({pathname: '/login'});
         });
     }
+    function showMap(lat,lng){
+        var url = "https://maps.google.com/?q=" + loggedInUser.latitude + "," + loggedInUser.longitude;
+        window.open(url);
+     }
 
     return (
         <header className="topbar navbarbg" data-navbarbg="skin1">
@@ -67,9 +70,7 @@ const Header = props => {
                 </div>
                 <Collapse className="navbarbg" navbar data-navbarbg="skin1" >
                     <Nav className="ml-auto float-right" navbar>
-                        <NavItem>
-                            <button href="link" className="btn btn-danger mr-2" style={{ marginTop: '15px' }} onClick={()=> updateToPro() }>Upgrade to Pro</button>
-                        </NavItem>
+
                         {/*--------------------------------------------------------------------------------*/}
                         {/* Start Profile Dropdown                                                         */}
                         {/*--------------------------------------------------------------------------------*/}
@@ -84,29 +85,20 @@ const Header = props => {
                             </DropdownToggle>
                             <DropdownMenu right className="user-dd">
                                 <DropdownItem>
-                                    <i className="ti-user mr-1 ml-1" /> My Account
-                  </DropdownItem>
+                                    <i className="ti-user mr-1 ml-1" /> {loggedInUser.name}
+                                </DropdownItem>
                                 <DropdownItem>
-                                    <i className="ti-wallet mr-1 ml-1" /> My Balance
-                  </DropdownItem>
-                                <DropdownItem>
-                                    <i className="ti-email mr-1 ml-1" /> Inbox
-                  </DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>
-                                    <i className="ti-settings mr-1 ml-1" /> Account Settings
-                  </DropdownItem>
+                                    <i className="ti-mobile mr-1 ml-1" /> {loggedInUser.phone}
+                                </DropdownItem>
+                                <DropdownItem onClick={showMap}>
+                                    <i className="ti-home mr-1 ml-1" /> {loggedInUser.address}
+                                </DropdownItem>
                                 <DropdownItem divider />
                                 <DropdownItem onClick={logoutClick}>
-                                    <i  className="fa fa-power-off mr-1 ml-1" /> Logout
-                  </DropdownItem>
-                                <DropdownItem divider />
-                                <Button
-                                    color="success"
-                                    className="btn-rounded ml-3 mb-2 mt-2"
-                                >
-                                    View Profile
-                  </Button>
+                                    <i className="fa fa-power-off mr-1 ml-1" /> Logout
+                                </DropdownItem>
+
+
                             </DropdownMenu>
                         </UncontrolledDropdown>
                         {/*--------------------------------------------------------------------------------*/}

@@ -44,10 +44,10 @@ class NewCourse extends Component {
                             <div className="container mt-3">
                                 <div className="row">
                                     <div className="col-md-5">
-                                        <div>
+                                        {/* <div>
                                             <Link to="/dashboard"> <button>Dashboard</button></Link>
-                                        </div>
-                                        <h1 className="my-4 font-weight-bold-display-4">Add New Course</h1>
+                                        </div> */}
+                                        <h1 className="my-4 font-weight-bold-display-4">Add New Item</h1>
                                         <Form>
                                             <TextField label="Description" name="description" type="text"/>
                                             <TextField label="Price" name="price" type="text"/>
@@ -86,7 +86,7 @@ class NewCourse extends Component {
         values.status = "ACTIVE";
         saveItem(values, this.props.restaurant.id).then(courses => {
             if(courses){
-                this.props.history.push({pathname: '/dashboard'});
+                this.props.history.push({pathname: '/dashboard/items'});
             }
         });
     }

@@ -22,6 +22,41 @@ export const getItemForRestaurant = async (id) => {
 };
 
 /**
+ * Get list of Meal-Plans for the Restauran.
+ * @param id Id of the restaurant.
+ * @returns {Promise<void>}
+ */
+
+ export const getMealPlansForRestaurant = async (id) => {
+    /* API Call to get courses for the user  */
+    console.log(environment.baseURL);
+    return axios.get(`${environment.baseURL}/api/restaurant/${id}/mealplan`)
+        .then(function (response) {
+            return response.data;
+        })
+        .catch(function (error) {
+            throw error;
+        });
+};
+
+/**
+ * Function to update mealplan.
+ * @param restaurantId Id of the restaurant.
+ * @returns {Promise<void>}
+ */
+
+ export const updateMealPlanForRestaurant = async (restaurantId, mealPlanId, mealPlan) => {
+    /* API Call to get courses for the user  */
+    return axios.patch(`${environment.baseURL}/api/restaurant/${restaurantId}/mealplan/${mealPlanId}`, mealPlan)
+        .then(function (response) {
+            return response.data;
+        })
+        .catch(function (error) {
+            throw error;
+        });
+};
+
+/**
  * Save Course.
  * @param course to be saved.
  * @returns {Promise<void>}

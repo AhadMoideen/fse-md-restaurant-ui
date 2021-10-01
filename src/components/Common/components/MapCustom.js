@@ -27,7 +27,7 @@ export default function MapCustom({center, zoom, lattitudelongitude}) {
     <MapContainer
       center={[50.5, 30.5]}
       zoom={13}
-      style={{ height: "100vh" }}
+      style={{ height: "81vh", width: "20vw" , borderRadius: "15px"}}
     >
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

@@ -43,7 +43,7 @@ class Items extends Component {
         }
         else {
             courses = (<div>
-                <p>No courses available</p>
+                <p>No Items available</p>
             </div>);
         }
 
@@ -66,7 +66,7 @@ class Items extends Component {
      * Re-direct to add course.
      */
     addNewCourse = ()=>{
-        this.props.history.push({pathname: '/course/add'});
+        this.props.history.push({pathname: '/dashboard/items/add'});
     }
 }
 

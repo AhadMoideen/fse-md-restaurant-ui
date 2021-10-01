@@ -1,7 +1,6 @@
 .Register {
-    width: 50%;
+    width: 25%;
     overflow: hidden;
-    margin: auto;
     padding: 40px;
     background: #ced6d4;
     border-radius: 15px;
@@ -36,4 +35,12 @@
   margin: 20px;
   display: inherit;
 
+}
+
+.registration-wrapper {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    justify-content: center;
 }

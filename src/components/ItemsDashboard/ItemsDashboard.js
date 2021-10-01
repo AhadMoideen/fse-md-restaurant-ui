@@ -9,7 +9,7 @@ class ItemsDashboard extends Component {
         let restaurant = getLoggedInUser();
         return (
             <article className="FacultyDashboard">
-                <h1>Meal Plans</h1>
+                <h1>Items</h1>
                 <div className="Info">
                     <Items {...this.props} restaurant={restaurant}/>
                 </div>
