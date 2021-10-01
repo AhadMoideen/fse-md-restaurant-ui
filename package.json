@@ -23,7 +23,9 @@
     "react-toastify": "^7.0.0",
     "react-tooltip": "^4.2.13",
     "web-vitals": "^0.2.4",
-    "yup": "^0.32.8"
+    "yup": "^0.32.8",
+    "reactstrap": "6.4.0",
+    "react-perfect-scrollbar": "1.2.0"
   },
   "scripts": {
     "start": "set BROWSER=none && react-scripts start",

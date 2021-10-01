@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Course.css';
-import {getCourse, saveModule, saveEvaluationComponent} from "../../services/course.service";
+import {getCourse, saveModule, saveEvaluationComponent} from "../../services/restaurant.service";
 import NewEvaluationComponent from "./components/NewEvaluationComponent/NewEvaluationComponent";
 import {EvaluationComponentCard} from './components/EvaluationComponentCard/EvaluationComponentCard';
 

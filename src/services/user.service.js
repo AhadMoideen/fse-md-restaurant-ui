@@ -30,16 +30,13 @@ export const login = async (values) => {
     console.log(environment.baseURL);
     console.log(process.env.REACT_APP_ENV);
     /* API Call to register */
-    console.log('Login:',values);
-
-
-    
+    console.log('Login:',values);    
     /* API: Implementation */
-    return axios.post(`${environment.baseURL}/login/`, values)
+    return axios.post(`${environment.baseURL}/api/authentication/restaurant/login/`, values)
         .then(function (response) {
             console.log('Login:Success:', response.data);
-            if (response.data.userType !== response.data.userType) {
-                throw new Error("Role not allowed");
+            if (!response.data.email) {
+                throw new Error("Authentication Faliure");
             } else {
                 /* Login successful */
                 response.data.token = 'xyz43hjIm36Y';
@@ -61,7 +58,7 @@ export const login = async (values) => {
  */
 export const logout = async () => {
     /* API Call to logout */
-    localStorage.removeItem('user');
+    localStorage.removeItem('restaurant');
 };
 
 
@@ -72,8 +69,8 @@ export const logout = async () => {
  */
 export const getLoggedInUser = () => {
     /* API Call to logout */
-    if(localStorage.getItem('user')){
-        return  JSON.parse(localStorage.getItem('user'));
+    if(localStorage.getItem('restaurant')){
+        return  JSON.parse(localStorage.getItem('restaurant'));
     }
     else {
         return null;

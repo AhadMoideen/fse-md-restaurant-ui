@@ -18,7 +18,7 @@ class LearningManagementSystem extends Component {
                     <Redirect exact from="/" to="/login"/>
                     <Route path="/login" component={LoginRegistration}/>
                     <Route path="/register" component={LoginRegistration}/>
-                    <Route path="/dashboard" exact render={(props) => (
+                    <Route path="/dashboard" render={(props) => (
                         <Dashboard {...props}/>
                     )}/>
                     <Route path="/course" component={CourseManagement}/>

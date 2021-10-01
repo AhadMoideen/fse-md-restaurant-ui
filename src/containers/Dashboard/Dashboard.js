@@ -1,28 +1,37 @@
 import React, {Component} from "react";
-import FacultyDashboard from "../../components/FacultyDashboard/FacultyDashboard";
-import StudentDashboard from "../../components/StudentDashboard/StudentDashboard";
+import ItemsDashboard from "../../components/ItemsDashboard/ItemsDashboard";
 import {logout} from "../../services/user.service";
 import './Dasboard.css';
+import {Route, Switch} from "react-router-dom";
+import Course from "../../components/Course/Course";
+import {Redirect} from "react-router";
 class Dashboard extends Component {
 
 
 
     render() {
-        let loggedInUser = JSON.parse(localStorage.getItem('user'));
+        let loggedInUser = JSON.parse(localStorage.getItem('restaurant'));
         /* TODO: If logged in re-direct */
         let dashboard = null;
-        if (loggedInUser && loggedInUser.userType === 'FACULTY') {
+        if (loggedInUser && loggedInUser.email) {
+            
             dashboard = (
                 <div>
-                    <FacultyDashboard {...this.props}/>
+                <Switch>
+                    <Redirect exact from="/" to="/login" />
+                    <Route path="/dashboard" exact render={(props) => (
+                        <ItemsDashboard {...this.props} />
+                    )} />
+                    <Route path="/dashboard/items" exact render={(props) => (
+                        <ItemsDashboard {...props} restaurant={loggedInUser} />
+                    )} />
+                    <Route path="/dashboard/mealplan" exact render={(props) => (
+                        <ItemsDashboard {...props} restaurant={loggedInUser} />
+                    )} />
+                    <Route path={this.props.match.url + '/:id'} exact component={Course} />
+                </Switch>
                 </div>
-            );
-        } else if (loggedInUser && loggedInUser.userType === 'STUDENT') {
-            dashboard = (
-                <div>
-                    <StudentDashboard {...this.props}/>
-                </div>
-            );
+            )
         } else {
             localStorage.removeItem('user');
             this.props.history.push({pathname: '/login'});

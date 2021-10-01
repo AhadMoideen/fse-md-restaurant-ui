@@ -4,11 +4,29 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './assets/scss/style.css';
+import indexRoutes from './routes/index.jsx';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter, BrowserRouter } from 'react-router-dom';
+
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <App/>
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App/>
-  </React.StrictMode>,
+  <BrowserRouter>
+      <Switch>
+      <Redirect exact from="/" to="/login" />
+        {indexRoutes.map((prop, key) => {
+          return (
+            <Route path={prop.path} key={key} component={prop.component} />
+          );
+        })}
+      </Switch>
+    </BrowserRouter>,
   document.getElementById('root')
 );
 

@@ -3,7 +3,7 @@ const environment = {
 }
 
 if(process.env.REACT_APP_ENV === 'dev'){
-    environment.baseURL = "http://EC2-C4C5-LB-724116359.ap-south-1.elb.amazonaws.com"
+    environment.baseURL = "http://44.195.199.28:8000"
 }
 
 if(process.env.REACT_APP_ENV === 'stg'){
